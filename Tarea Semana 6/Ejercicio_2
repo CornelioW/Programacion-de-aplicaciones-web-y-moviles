@@ -1,0 +1,29 @@
+import java.util.List;
+
+public class Utilidades {
+    public static <T extends Comparable<T>> T encontrarMayor(List<T> elementos) {
+        if (elementos == null || elementos.isEmpty()) {
+            throw new IllegalArgumentException("La lista no puede estar vacía.");
+        }
+        T mayor = elementos.get(0);
+        for (T elemento : elementos) {
+            if (elemento.compareTo(mayor) > 0) {
+                mayor = elemento;
+            }
+        }
+        return mayor;
+    }
+}
+
+// Uso del método genérico
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numeros = Arrays.asList(10, 20, 5, 30, 15);
+        System.out.println("El mayor es: " + Utilidades.encontrarMayor(numeros));
+
+        List<String> palabras = Arrays.asList("manzana", "pera", "mango", "cereza");
+        System.out.println("El mayor es: " + Utilidades.encontrarMayor(palabras));
+    }
+}
